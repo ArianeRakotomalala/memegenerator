@@ -1,0 +1,35 @@
+{% extends "memeGenerator/base.html" %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 700px;">
+        <div class="text-center">
+            <h2 class="mt-2 text-success">Inscription</h2>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                <input type="password" class="form-control" name="password1" required>
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                <input type="password" class="form-control" name="password2" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100 rounded-pill py-2">S'inscrire</button>
+        </form>
+        <div class="text-center mt-3">
+            <p class="small">Déjà un compte ? <a href="{% url 'connexion' %}" class="text-decoration-none fw-bold">Se connecter</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
